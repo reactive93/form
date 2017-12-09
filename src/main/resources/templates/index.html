@@ -1,10 +1,56 @@
 <!DOCTYPE html>
-<html lang="en">
+<html>
 <head>
-    <meta charset="UTF-8">
-    <title>Form</title>
+	<meta charset="utf-8" />
+	<title>Form</title>
+	<meta name="keywords" content="" />
+	<meta name="description" content="" />
+	<link href="style.css" rel="stylesheet">
 </head>
+
 <body>
+
+<div class="wrapper">
+
+	<header class="header">
+		<strong>Header:</strong> </header>
+
+	<div class="middle">
+
+		<div class="container">
+			<main class="content">
+				<strong>Content: file for send</strong>
+                <form>
+                    <fieldset>
+                        <legend>Файл:</legend>
+                        <p><label for="file_name">Имя <em>*</em></label> <input type="text" id="file_name"></p>
+                    </fieldset>
+                </form>
+                <form>
+                    <fieldset>
+                        <legend>Текст:</legend>
+                        <p><label for="text_file"></label> <textarea type="text" id="text_file" cols=80 rows=25></textarea></p>
+                        <p><input type="submit" name="Туда"> </p>
+                    </fieldset>
+                </form>
+            </main><!-- .content -->
+		</div><!-- .container-->
+
+		<aside class="left-sidebar">
+			<strong>Left Sidebar: file-tree from ssh server</strong>
+        </aside><!-- .left-sidebar -->
+
+		<aside class="right-sidebar">
+			<strong>Right Sidebar: choosing file</strong>
+        </aside><!-- .right-sidebar -->
+
+	</div><!-- .middle-->
+
+</div><!-- .wrapper -->
+
+<footer class="footer">
+	<strong>Footer:</strong> Не знаю зачем, пусть пока будет.
+</footer><!-- .footer -->
 
 </body>
 </html>

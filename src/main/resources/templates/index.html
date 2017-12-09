@@ -1,11 +1,11 @@
 <!DOCTYPE html>
-<html>
+<html xmlns:th="http://www.thymeleaf.org">
 <head>
 	<meta charset="utf-8" />
 	<title>Form</title>
 	<meta name="keywords" content="" />
 	<meta name="description" content="" />
-	<link href="../static/style.css" rel="stylesheet">
+	<link th:href="@{/style.css}" rel="stylesheet"/>
 </head>
 
 <body>
@@ -23,14 +23,14 @@
                 <form>
                     <fieldset>
                         <legend>Файл:</legend>
-                        <p><label for="file_name">Имя <em>*</em></label> <input type="text" id="file_name"></p>
+                        <p><label for="file_name">Имя <em>*</em></label> <input type="text" id="file_name"/></p>
                     </fieldset>
                 </form>
                 <form>
                     <fieldset>
                         <legend>Текст:</legend>
-                        <p><label for="text_file"></label> <textarea type="text" id="text_file" cols=80 rows=25></textarea></p>
-						<p><input type="file" name="send"> <button id="from_explorer">Загрузить файл</button></p>
+						<textarea cols="70" rows="5"></textarea>
+						<p><input type="file" name="send"/> <button id="from_explorer">Загрузить файл</button></p>
 
                     </fieldset>
                 </form>

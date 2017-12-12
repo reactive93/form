@@ -55,8 +55,10 @@ body {
 /* Header
 -----------------------------------------------------------------------------*/
 .header {
+	padding: 20px 10px 10px 10px;
 	height: 150px;
 	background-color: azure;
+	align-content: center;
 }
 
 
@@ -111,13 +113,13 @@ body {
 }
 
 
-/* Footer
------------------------------------------------------------------------------*/
-.footer {
-	margin: -100px auto 0;
-	min-width: 480px;
-	max-width: 1980px;
-	height: 100px;
-	background-color: azure;
-	position: fixed;
-}
+/*!* Footer*/
+/*-----------------------------------------------------------------------------*!*/
+/*.footer {*/
+	/*margin: -100px auto 0;*/
+	/*min-width: 480px;*/
+	/*max-width: 1980px;*/
+	/*height: 100px;*/
+	/*background-color: azure;*/
+	/*position: relative;*/
+/*}*/

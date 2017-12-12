@@ -6,8 +6,11 @@
 	<title>Form</title>
 	<meta name="keywords" content="" />
 	<meta name="description" content="" />
+	<link rel="stylesheet" href="../../resources/static/jqwidgets/styles/jqx.base.css" type="text/css" th:href="@{/jqwidgets/styles/jqx.base.css}" />
 	<link th:href="@{/style.css}" href="../../resources/static/style.css" rel="stylesheet"/>
-	<link th:href="@{/menu.css}" href="../../resources/static/menu.css" rel="stylesheet"/>
+	<script type="text/javascript" src="../../resources/static/scripts/jquery-1.11.1.min.js" th:src="@{/scripts/jquery-1.11.1.min.js}"></script>
+	<script type="text/javascript" src="../../resources/static/jqwidgets/jqxcore.js" th:src="@{/jqwidgets/jqxcore.js}"></script>
+	<script type="text/javascript" src="../../resources/static/jqwidgets/jqxmenu.js" th:src="@{/jqwidgets/jqxmenu.js}"></script>
 </head>
 
 <body>
@@ -16,7 +19,7 @@
 
 	<header class="header">
 
-			<form>
+			<form id="auth">
 			<fieldset>
 				<legend>Sin in</legend>
 				<p><label for="login">Login <em>*</em></label> <input type="text" id="login"/></p>
@@ -24,6 +27,8 @@
 				<p><button id="sing_in" value="Sing in">Sing in</button> </p>
 			</fieldset>
 		</form>
+
+		Select folder: <div id="selectFolder"></div>
 
 	</header>
 
@@ -33,34 +38,32 @@
 			<main class="content">
 
 
-				<strong>Content: file for send</strong>
-                <form>
+                <form action="/upload" method="post" id="form_upload" enctype="multipart/form-data">
                     <fieldset>
-                        <legend>Файл:</legend>
-                        <p><label for="file_name">Имя <em>*</em></label> <input type="text" id="file_name"/></p>
-                    </fieldset>
-                </form>
-                <form>
-                    <fieldset>
-                        <legend>Текст:</legend>
-						<textarea cols="70" rows="5"></textarea>
-						<p><input type="file" name="send"/> <button id="from_explorer">Загрузить файл</button></p>
+						<p>	<input type="text" id="path_form" name="path" value=""/>
+							<input type="file" name="file"/>
+							<button type="submit"> Upload file</button>
+						</p>
 
                     </fieldset>
                 </form>
+
             </main><!-- .content -->
+
 		</div><!-- .container-->
 
 		<aside class="left-sidebar">
 			<strong>Left Sidebar: file-tree from ssh server</strong>
-			<ul th:fragment="fragment_node(menu)" th:unless="${#lists.isEmpty(menu.children)}" class="" >
+			<div id="jqxMenu">
+			<ul th:fragment="fragment_node(menu)" th:unless="${#lists.isEmpty(menu.children)}" >
 
 				<li th:each="child: ${menu.children}" th:inline="text">
-					[[${child.name}]]
+					[[${child.path}]]
 					<ul th:replace="this::fragment_node(${child})"></ul>
 				</li>
 
 			</ul>
+			</div>
         </aside><!-- .left-sidebar -->
 
 		<aside class="right-sidebar">
@@ -75,6 +78,28 @@
 <!--<footer class="footer">-->
 	<!--<strong>Footer:</strong> Не знаю зачем, пусть пока будет.-->
 <!--</footer>&lt;!&ndash; .footer &ndash;&gt;-->
+<script th:inline="javascript">
+    $(document).ready(function () {
+        // Create a jqxMenu
+        $("#jqxMenu").jqxMenu({ width: '120', mode: 'vertical'});
+        $("#jqxMenu").css('visibility', 'visible');
+    });
+	var element='';
+	var ss='';
+    $('#jqxMenu').on('itemclick', function (event)
+    {
+        // get the clicked LI element.
+        element = event.args;
+        ss=element.textContent;
+        ss=ss.split('\t').join('');
+        ss=ss.split('\n').join('');
+        $('#selectFolder').text('');
+		$('#selectFolder').text(ss);
+        $('#path_form').val(ss);
+    });
+
+</script>
+
 
 </body>
 </html>

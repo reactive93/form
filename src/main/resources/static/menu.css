@@ -1,52 +1,33 @@
-/* Убираем отступы и маркеры в ненумерованном списке, задаём ширину и стили оформления */
-ul {
-    padding: 0;
-    margin: 0;
+#mymenu {
+    float: left;
+    width: 150px;
+    height: auto;
+    margin: 20px 10px;
     list-style: none;
-    width: 140px;
-    list-style: none;
-    border-bottom: 1px solid #C1D8E6;
-    font-size: 11px;
-    font-family: Geneva, Arial, Helvetica, sans-serif;
 }
-/* Задаём относительное позиционирование выпадающего списка */
-ul li {
-    position: relative;
+
+#mymenu li {
+    display: block !important;
+    width: auto;
+    padding: 0 10px;
+    font-size: 18px;
 }
-/* Задаём абсолютное позиционирование выпадающего списка, сдвиг влево на 139 px, чтобы выпадающее меню перекрывало главное и не создавалась двойная граница, по умолчанию выпадающий список будет скрыт */
-li ul {
-    position: absolute;
-    left: 139px;
-    top: 0;
+
+#mymenu li ul {
     display: none;
+    width: 200px;
 }
-/* Задаём стили для ссылок */
-ul li a {
-    display: block;
-    text-decoration: none;
-    color: #003399;
-    background: #EAF4FF;
 
-    background-repeat: no-repeat;
-    background-position: 1px 9px;
-    padding: 5px 5px 5px 10px;
-    border: 1px solid #ccc;
-    border-bottom: 0;
-}
-/* Указываем браузеру, что подменю будет появляться, когда курсор находится над элементом списка. */
-li:hover ul, li.over ul{
+#mymenu li:hover ul {
     display: block;
+    list-style: none;
+    margin: 0 0 0 0px;
+    padding: 0;
 }
-/* Задаём стили для выпадающего меню */
-ul li a:hover {
-    background: #77CF7F;
 
-    background-repeat: no-repeat;
-    background-position: 1px 9px;
-    text-decoration: none;
+#mymenu li ul li {
+    float: left;
+    width: 200px;
+    padding: 5px 0;
+    font-size: 14px;
 }
-/* ХАК для ie, чтобы и там всё корректно отображалось:)*/
-/* Fix IE. Hide from IE Mac \*/
-* html ul li { float: left; height: 1%; }
-* html ul li a { height: 1%; }
-/* End */ 

@@ -4,6 +4,7 @@ import com.form.logic.MenuItem;
 import com.jcraft.jsch.*;
 import org.springframework.stereotype.Component;
 
+import java.io.InputStream;
 import java.util.Vector;
 
 
@@ -83,5 +84,14 @@ public class SSHClient {
         }
 
     }
+
+
+    public void upLoad(InputStream stream,String path)throws SftpException{
+
+        this.sftp.put(stream,path, ChannelSftp.OVERWRITE);
+
+
+    }
+
 
 }

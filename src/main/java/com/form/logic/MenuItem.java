@@ -1,5 +1,8 @@
 package com.form.logic;
 
+import com.fasterxml.jackson.annotation.JsonBackReference;
+
+import java.util.ArrayList;
 import java.util.List;
 
 public class MenuItem {
@@ -7,10 +10,12 @@ public class MenuItem {
     private boolean isFolder;
     private String path;
     private String name;
-
+    @JsonBackReference
     private MenuItem parent;
 
     private List<MenuItem> children;
+
+
 
 
     public void setName(String name) {
@@ -53,11 +58,22 @@ public class MenuItem {
     }
 
     public MenuItem getParent() {
+
+        if (this.parent==null){
+            return this;
+        }
+
         return parent;
     }
 
     public List<MenuItem> getChildren() {
+
+        if (this.children==null){
+            this.children = new ArrayList<>();
+            return this.children;
+        }
         return children;
+
     }
 
 

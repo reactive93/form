@@ -36,6 +36,7 @@ public class SSHClient {
         }
         try {
             channel = session.openChannel("sftp");
+            channel.connect();
         } catch (JSchException e) {
             System.out.println("Error getting channel");
             e.printStackTrace();
@@ -43,13 +44,11 @@ public class SSHClient {
         sftp = (ChannelSftp)channel;
 
     }
-    private String prev="";
+
     public void getMenu(String path,MenuItem root){
-        prev+="/";
-        String current="";
-        current+=prev+path;
+
         try {
-            Vector<ChannelSftp.LsEntry> list= sftp.ls(current);
+            Vector<ChannelSftp.LsEntry> list= this.sftp.ls(path);
 
             for (ChannelSftp.LsEntry item:list) {
 
@@ -57,25 +56,24 @@ public class SSHClient {
 
                     if (item.getAttrs().isDir()){
 
-                        prev+=path;
                         String nameFolder = item.getFilename();
                         MenuItem folder = new MenuItem();
                         folder.setName(nameFolder);
-                        folder.setPath(path);
+                        folder.setPath(path+nameFolder+"/");
                         folder.setFolder(true);
                         folder.setParent(root);
                         root.getChildren().add(folder);
-                        getMenu(nameFolder,folder);
+                        getMenu(folder.getPath(),folder);
                     }
                     else {
                         String name = item.getFilename();
                         MenuItem file = new MenuItem();
+                        file.setPath(path+name);
                         file.setName(name);
                         root.getChildren().add(file);
                     }
 
                 }
-                prev="";
             }
 
 

@@ -1,0 +1,52 @@
+/* Убираем отступы и маркеры в ненумерованном списке, задаём ширину и стили оформления */
+ul {
+    padding: 0;
+    margin: 0;
+    list-style: none;
+    width: 140px;
+    list-style: none;
+    border-bottom: 1px solid #C1D8E6;
+    font-size: 11px;
+    font-family: Geneva, Arial, Helvetica, sans-serif;
+}
+/* Задаём относительное позиционирование выпадающего списка */
+ul li {
+    position: relative;
+}
+/* Задаём абсолютное позиционирование выпадающего списка, сдвиг влево на 139 px, чтобы выпадающее меню перекрывало главное и не создавалась двойная граница, по умолчанию выпадающий список будет скрыт */
+li ul {
+    position: absolute;
+    left: 139px;
+    top: 0;
+    display: none;
+}
+/* Задаём стили для ссылок */
+ul li a {
+    display: block;
+    text-decoration: none;
+    color: #003399;
+    background: #EAF4FF;
+
+    background-repeat: no-repeat;
+    background-position: 1px 9px;
+    padding: 5px 5px 5px 10px;
+    border: 1px solid #ccc;
+    border-bottom: 0;
+}
+/* Указываем браузеру, что подменю будет появляться, когда курсор находится над элементом списка. */
+li:hover ul, li.over ul{
+    display: block;
+}
+/* Задаём стили для выпадающего меню */
+ul li a:hover {
+    background: #77CF7F;
+
+    background-repeat: no-repeat;
+    background-position: 1px 9px;
+    text-decoration: none;
+}
+/* ХАК для ie, чтобы и там всё корректно отображалось:)*/
+/* Fix IE. Hide from IE Mac \*/
+* html ul li { float: left; height: 1%; }
+* html ul li a { height: 1%; }
+/* End */ 

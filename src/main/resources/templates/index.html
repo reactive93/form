@@ -19,12 +19,14 @@
 
 	<header class="header">
 
-			<form id="auth">
+		<form action="/login1" method="post" id="form2">
 			<fieldset>
-				<legend>Sin in</legend>
-				<p><label for="login">Login <em>*</em></label> <input type="text" id="login"/></p>
-				<p><label for="pass">Password<em>*</em></label> <input type="password" id="pass"/></p>
-				<p><button id="sing_in" value="Sing in">Sing in</button> </p>
+				<legend>Connection</legend>
+				<label>Ip<input id="ip1" type="text" name="ip1" /></label>
+				<label>Port<input id="port" type="text" name="port"/></label>
+				<label>Login<input id="login1" type="text" name="login1"/></label>
+				<label>Pasword<input id="pass" type="password" name="pass"/></label>
+				<button type="submit">login</button>
 			</fieldset>
 		</form>
 
@@ -54,7 +56,9 @@
 
 		<aside class="left-sidebar">
 			<strong>Left Sidebar: file-tree from ssh server</strong>
-			<div id="jqxMenu">
+			<div id="jqxMenu" th:if="${isconnected==true}">
+
+
 			<ul th:fragment="fragment_node(menu)" th:unless="${#lists.isEmpty(menu.children)}" >
 
 				<li th:each="child: ${menu.children}" th:inline="text">
@@ -72,8 +76,6 @@
 
 	</div><!-- .middle-->
 </div><!-- .wrapper -->
-
-<p th:text="${menu.path}"></p>
 
 <!--<footer class="footer">-->
 	<!--<strong>Footer:</strong> Не знаю зачем, пусть пока будет.-->

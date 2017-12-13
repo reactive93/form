@@ -85,6 +85,13 @@ public class SSHClient {
 
     }
 
+    public boolean isConnected(){
+
+        if (this.sftp!=null){
+            return this.sftp.isConnected();
+        }
+        return false;
+    }
 
     public void upLoad(InputStream stream,String path)throws SftpException{
 

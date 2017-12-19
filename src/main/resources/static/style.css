@@ -84,7 +84,7 @@ body {
 }
 .content {
 	padding: 5px 5px 5px 520px;
-	height: 400px;
+	height: 800px;
 	background-color: cornsilk;
 }
 
@@ -95,7 +95,7 @@ body {
 	align-content: center;
 	float: left;
 	width: 250px;
-	height: 400px;
+	height: 800px;
 	margin-left: -100%;
 	position: relative;
 	background: #B5E3FF;
@@ -108,7 +108,7 @@ body {
 .right-sidebar {
 	float: left;
 	width: 250px;
-	height: 400px;
+	height: 800px;
 	margin-left: -100%;
 	left: 250px;
 	position: relative;

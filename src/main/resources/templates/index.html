@@ -17,22 +17,7 @@
 
 <div class="wrapper">
 
-	<header class="header">
 
-		<form action="/login1" method="post" id="form2">
-			<fieldset>
-				<legend>Connection</legend>
-				<label>Ip<input id="ip1" type="text" name="ip1" /></label>
-				<label>Port<input id="port" type="text" name="port"/></label>
-				<label>Login<input id="login1" type="text" name="login1"/></label>
-				<label>Pasword<input id="pass" type="password" name="pass"/></label>
-				<button type="submit">login</button>
-			</fieldset>
-		</form>
-
-		Select folder: <div id="selectFolder"></div>
-
-	</header>
 
 	<div class="middle">
 
@@ -55,31 +40,41 @@
 		</div><!-- .container-->
 
 		<aside class="left-sidebar">
-			<strong>Left Sidebar: file-tree from ssh server</strong>
-			<div id="jqxMenu" th:if="${isconnected==true}">
+			<div class="sing_login">
+				<form action="/login1" method="post" id="form2">
+					<fieldset>
+						<div class="legen"><legend>Connection</legend></div>
+						<div><label>Ip<input id="ip1" type="text" name="ip1" /></label></div>
+						<div><label>Port<input id="port" type="text" name="port"/></label></div>
+						<div><label>Login<input id="login1" type="text" name="login1"/></label></div>
+						<div><label>Pasword<input id="pass" type="password" name="pass"/></label></div>
+						<div><button type="submit">login</button></div>
+					</fieldset>
+				</form>
 
-
-			<ul th:fragment="fragment_node(menu)" th:unless="${#lists.isEmpty(menu.children)}" >
-
-				<li th:each="child: ${menu.children}" th:inline="text">
-					[[${child.path}]]
-					<ul th:replace="this::fragment_node(${child})"></ul>
-				</li>
-
-			</ul>
+				<div id="selectFolder" style="visibility: hidden"></div>
 			</div>
         </aside><!-- .left-sidebar -->
 
 		<aside class="right-sidebar">
-			<strong>Right Sidebar: choosing file</strong>
+			<strong>Left Sidebar: file-tree from ssh server</strong>
+			<div id="jqxMenu" th:if="${isconnected==true}">
+
+
+				<ul th:fragment="fragment_node(menu)" th:unless="${#lists.isEmpty(menu.children)}" >
+
+					<li th:each="child: ${menu.children}" th:inline="text">
+						[[${child.path}]]
+						<ul th:replace="this::fragment_node(${child})"></ul>
+					</li>
+
+				</ul>
+			</div>
         </aside><!-- .right-sidebar -->
 
 	</div><!-- .middle-->
 </div><!-- .wrapper -->
 
-<!--<footer class="footer">-->
-	<!--<strong>Footer:</strong> Не знаю зачем, пусть пока будет.-->
-<!--</footer>&lt;!&ndash; .footer &ndash;&gt;-->
 <script th:inline="javascript">
     $(document).ready(function () {
         // Create a jqxMenu

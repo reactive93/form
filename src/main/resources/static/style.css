@@ -56,9 +56,10 @@ body {
 -----------------------------------------------------------------------------*/
 .header {
 	padding: 20px 10px 10px 10px;
-	height: 150px;
+	height: 200px;
 	background-color: azure;
 	align-content: center;
+	text-align: center;
 }
 
 
@@ -83,7 +84,7 @@ body {
 }
 .content {
 	padding: 5px 5px 5px 520px;
-	border: solid;
+	height: 400px;
 	background-color: cornsilk;
 }
 
@@ -91,8 +92,10 @@ body {
 /* Left Sidebar
 -----------------------------------------------------------------------------*/
 .left-sidebar {
+	align-content: center;
 	float: left;
 	width: 250px;
+	height: 400px;
 	margin-left: -100%;
 	position: relative;
 	background: #B5E3FF;
@@ -105,6 +108,7 @@ body {
 .right-sidebar {
 	float: left;
 	width: 250px;
+	height: 400px;
 	margin-left: -100%;
 	left: 250px;
 	position: relative;
@@ -112,6 +116,14 @@ body {
 
 }
 
+.sing_login{
+	padding-right: 20%;
+    text-align: right;
+	align-content: flex-start;
+}
+.legen{
+	padding: 10px 15px 15px 10px;
+}
 
 /*!* Footer*/
 /*-----------------------------------------------------------------------------*!*/

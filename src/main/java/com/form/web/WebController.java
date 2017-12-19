@@ -11,11 +11,10 @@ import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.RequestParam;
-import org.springframework.web.bind.annotation.RestController;
 import org.springframework.web.multipart.MultipartFile;
 import org.springframework.web.servlet.ModelAndView;
-import org.springframework.web.servlet.view.RedirectView;
-import org.thymeleaf.spring4.view.AjaxThymeleafViewResolver;
+
+
 
 import java.io.IOException;
 import java.util.Map;
@@ -66,7 +65,6 @@ public class WebController {
             model.addAttribute("isconnected",isconnecnted);
             return new ModelAndView("index", (Map<String, ?>) model);
         }
-
         model.addAttribute("isconnected",isconnecnted);
 
         return new ModelAndView("index", (Map<String, ?>) model);
@@ -90,16 +88,19 @@ public class WebController {
             } catch (IOException e) {
                 result="Failed upload";
                 System.out.println("WRITE FAILED");
-
                 e.printStackTrace();
+                return "failed";
             } catch (SftpException e) {
                 System.out.println("SFTP FAILED");
 
                 e.printStackTrace();
+                return "failed";
             }
 
         }
-        return result;
+
+
+        return "success";
 
     }
 
